@@ -27,7 +27,7 @@ class SignIn extends StatelessWidget {
                 child: Material(
                   borderRadius: BorderRadius.circular(200),
                   color: Colors.blue[300],
-                  child: Container(
+                  child: const SizedBox(
                     width: 400,
                     height: 400,
                   ),
@@ -39,7 +39,7 @@ class SignIn extends StatelessWidget {
                 child: Material(
                   borderRadius: BorderRadius.circular(150),
                   color: Colors.blue[200],
-                  child: Container(
+                  child: const SizedBox(
                     width: 300,
                     height: 300,
                   ),
