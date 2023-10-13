@@ -41,7 +41,7 @@ class SignUp extends StatelessWidget {
               Container(
                 width: deviceWidth(context) * 0.95,
                 child: Text(
-                  "Complete the form and create a free account",
+                  "Complete the form and sign up",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
