@@ -1,10 +1,9 @@
 // ignore_for_file: sized_box_for_whitespace
 
+import 'package:book_app/pages/sign_up.dart';
 import 'package:flutter/material.dart';
-// import 'package:book_app/pages/sign_up.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -16,8 +15,6 @@ class SignIn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isKeyboardVisible = KeyboardVisibilityProvider.isKeyboardVisible(context);
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -25,7 +22,6 @@ class SignIn extends StatelessWidget {
         shadowColor: Colors.transparent,
       ),
       body: Align(
-        // alignment: Alignment.topCenter,
         child: SizedBox(
           width: deviceWidth(context),
           child: Column(
@@ -121,7 +117,12 @@ class SignIn extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignUp()),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       shape: RoundedRectangleBorder(
