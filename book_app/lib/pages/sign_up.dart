@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:flutter/material.dart';
 
 class SignUp extends StatelessWidget {
@@ -11,162 +13,143 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: SizedBox(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: const Color.fromARGB(255, 14, 76, 190),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Container(
+          decoration: const BoxDecoration(color: Colors.white),
           width: deviceWidth(context),
           height: deviceHeight(context),
-          child: Stack(
+          child: Column(
             children: [
-              Align(
-                alignment: Alignment.bottomRight,
-                widthFactor: 0.7,
-                heightFactor: 0.5,
-                child: Material(
-                  borderRadius: BorderRadius.circular(200),
-                  color: Colors.blue[300],
-                  child: const SizedBox(
-                    width: 400,
-                    height: 400,
+              AppBar(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+                    onPressed: () => Navigator.pop(context),
+                  )),
+              Container(
+                width: deviceWidth(context) * 0.95,
+                child: const Text(
+                  "Sign Up",
+                  style: TextStyle(fontSize: 42, fontWeight: FontWeight.w800),
+                  textAlign: TextAlign.start,
+                ),
+              ),
+              Container(
+                width: deviceWidth(context) * 0.95,
+                child: Text(
+                  "Complete the form and create a free account",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[600],
                   ),
                 ),
               ),
-              Positioned(
-                top: deviceHeight(context) * -0.2,
-                right: deviceWidth(context) * -0.2,
-                child: Material(
-                  borderRadius: BorderRadius.circular(150),
-                  color: Colors.blue[200],
-                  child: const SizedBox(
-                    width: 300,
-                    height: 300,
+              const Padding(
+                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Full Name",
                   ),
                 ),
               ),
-              SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: SizedBox(
-                  height: deviceHeight(context),
-                  child: Center(
-                    child: Container(
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Spacer(flex: 2),
-                            SizedBox(
-                              width: deviceWidth(context) * 0.8,
-                              child: const Text(
-                                "Sign Up!",
-                                style: TextStyle(
-                                    fontSize: 42, fontWeight: FontWeight.w900),
-                                textAlign: TextAlign.left,
-                              ),
-                            ),
-                            const Spacer(),
-                            Container(
-                              // color: Colors.green,
-                              padding: const EdgeInsets.fromLTRB(15, 15, 15, 30),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                border: const Border(
-                                  bottom: BorderSide(
-                                    color: Color.fromARGB(30, 0, 0, 0),
-                                    width: 1,
-                                  ),
-                                  top: BorderSide(
-                                    color: Color.fromARGB(30, 0, 0, 0),
-                                    width: 1,
-                                  ),
-                                  left: BorderSide(
-                                    color: Color.fromARGB(30, 0, 0, 0),
-                                    width: 1,
-                                  ),
-                                  right: BorderSide(
-                                    color: Color.fromARGB(30, 0, 0, 0),
-                                    width: 1,
-                                  ),
-                                ),
-                                color: Colors.white,
-                              ),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    width: deviceWidth(context) * 0.8,
-                                    child: const TextField(
-                                        decoration: InputDecoration(
-                                      hintText: "Name",
-                                    )),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                    child: SizedBox(
-                                      width: deviceWidth(context) * 0.8,
-                                      child: const TextField(
-                                          decoration: InputDecoration(
-                                        hintText: "Last Name",
-                                      )),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                    child: SizedBox(
-                                      width: deviceWidth(context) * 0.8,
-                                      child: const TextField(
-                                          decoration: InputDecoration(
-                                        hintText: "Email",
-                                      )),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                    child: SizedBox(
-                                      width: deviceWidth(context) * 0.8,
-                                      child: const TextField(
-                                          decoration: InputDecoration(
-                                        hintText: "Password",
-                                      )),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                    child: SizedBox(
-                                      width: deviceWidth(context) * 0.8,
-                                      child: const TextField(
-                                          decoration: InputDecoration(
-                                        hintText: "Confirm password",
-                                      )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Spacer(flex: 1),
-                            SizedBox(
-                              width: deviceWidth(context) * 0.8,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(50)),
-                                    padding: const EdgeInsets.all(11)),
-                                child: const Text(
-                                  "Register",
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                              ),
-                            ),
-                            const Spacer(flex: 2),
-                          ]),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Email",
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Confirm password",
+                  ),
+                ),
+              ),
+              const Spacer(),
+              Container(
+                width: deviceWidth(context) * 0.95,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      // set border color to black
+                      side: const BorderSide(color: Colors.grey),
+                      backgroundColor: Colors.blue,
                     ),
+                    child: const Text("Sign Up",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        )),
                   ),
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: deviceWidth(context) * 0.95,
+                child: Text(
+                  "- OR -",
+                  style: TextStyle(
+                      color: Colors.grey[600], fontWeight: FontWeight.w600),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: deviceWidth(context) * 0.95,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      // set border color to black
+                      side: const BorderSide(color: Colors.grey),
+                      backgroundColor: Colors.white,
+                    ),
+                    child: Text("Sign Ip",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.grey[700],
+                          fontWeight: FontWeight.w600,
+                        )),
+                  ),
+                ),
+              ),
+              const Spacer(flex: 1),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
