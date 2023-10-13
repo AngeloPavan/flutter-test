@@ -58,7 +58,7 @@ class SignUp extends StatelessWidget {
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+                padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: "Email",
@@ -66,7 +66,7 @@ class SignUp extends StatelessWidget {
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+                padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: "Password",
@@ -74,7 +74,7 @@ class SignUp extends StatelessWidget {
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+                padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: "Confirm password",
