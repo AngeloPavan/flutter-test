@@ -10,6 +10,7 @@ class HomeScaffold extends StatefulWidget {
 
 class _HomeScaffoldState extends State<HomeScaffold> {
   int _selectedIndex = 0;
+  bool _isSearching = false;
 
   final List<Widget> _pages = [
     HomePage(),
@@ -30,13 +31,45 @@ class _HomeScaffoldState extends State<HomeScaffold> {
             Navigator.pop(context);
           },
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+            onPressed: () {
+              setState(() {
+                _isSearching = !_isSearching;
+              });
+            },
+          )
+        ],
         centerTitle: true,
-        title: const Text(
-          "",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-          ),
+        title: AnimatedOpacity(
+          opacity: _isSearching ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 200),
+          child: _isSearching
+              ? const TextField(
+                  decoration: InputDecoration(
+                    hintText: "Search something...",
+                  ),
+                )
+              : const Text(
+                  "",
+                ),
         ),
+        // AnimatedCrossFade(
+        //     opacity: _isSearching ? 1.0 : 0.0,
+        //     duration: const Duration(milliseconds: 200),
+        //     firstChild: const Text(""),
+        //     secondChild: const TextField(
+        //       decoration: InputDecoration(
+        //         hintText: "Search something...",
+        //       ),
+        //     ),
+        //     crossFadeState: _isSearching
+        //         \? CrossFadeState.showSecond
+        //         : CrossFadeState.showFirst),
         backgroundColor: Colors.white,
       ),
       body: _pages[_selectedIndex],
