@@ -13,7 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Prima App',
-        theme: ThemeData(primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          // scaffoldBackgroundColor: Colors.white,
+          fontFamily: 'Poppins',
+        ),
         home: const SignIn());
   }
 }
