@@ -126,17 +126,18 @@ class SignUp extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      // set border color to black
                       side: const BorderSide(color: Colors.grey),
                       backgroundColor: Colors.white,
                     ),
-                    child: Text("Sign Ip",
+                    child: Text("Sign In",
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.grey[700],
