@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-import 'package:book_app/controllers/authcontroller.dart' as authcontroller;
+import 'package:book_app/controllers/auth_controller.dart' as authcontroller;
+
+/*
+  !DATI DI TEST!
+
+  username: 'kminchelle',
+  password: '0lelplR',
+*/
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
