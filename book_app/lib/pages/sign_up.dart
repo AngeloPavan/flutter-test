@@ -93,7 +93,6 @@ class SignUp extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      // set border color to black
                       side: const BorderSide(color: Colors.grey),
                       backgroundColor: Colors.blue,
                     ),

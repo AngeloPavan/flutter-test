@@ -1,11 +1,9 @@
 // ignore_for_file: sized_box_for_whitespace
-import 'package:book_app/pages/home_scaffold.dart';
 import 'package:book_app/pages/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-
 import 'package:book_app/controllers/authcontroller.dart' as authcontroller;
 
 class SignIn extends StatefulWidget {
@@ -26,7 +24,7 @@ class _SignInState extends State<SignIn> {
   late bool _passwordVisible;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     Get.put(authcontroller.AuthController());
     _passwordVisible = false;
@@ -113,7 +111,8 @@ class _SignInState extends State<SignIn> {
                   padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.find<authcontroller.AuthController>().login(emailController.text, passwordController.text);
+                      Get.find<authcontroller.AuthController>()
+                          .login(emailController.text, passwordController.text);
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 10),
@@ -163,7 +162,6 @@ class _SignInState extends State<SignIn> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      // set border color to black
                       side: const BorderSide(color: Colors.grey),
                       backgroundColor: Colors.white,
                     ),

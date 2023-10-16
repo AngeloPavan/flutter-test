@@ -1,3 +1,4 @@
+import 'package:book_app/pages/home_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -23,19 +24,21 @@ class AuthController extends GetxController {
 
       if (response.statusCode == 200) {
         final userData = jsonDecode(response.body);
-        // saveUserDataToLocal(userData);
         Get.snackbar(
           "Successo",
           "I dati inseriti sono corretti",
           backgroundColor: Colors.green,
           colorText: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
         );
+        Get.to(HomeScaffold());
       } else {
         Get.snackbar(
           "Errore",
           "I dati inseriti non sono corretti",
           backgroundColor: Colors.red,
           colorText: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
         );
       }
     } catch (e) {
@@ -44,6 +47,7 @@ class AuthController extends GetxController {
         "Si è verificato un errore",
         backgroundColor: Colors.red,
         colorText: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
       );
     } finally {
       isLoading.value = false;
