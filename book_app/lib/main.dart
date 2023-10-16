@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         title: 'Prima App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.white,
           fontFamily: 'Poppins',
         ),
         home: const SignIn());

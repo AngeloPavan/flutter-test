@@ -1,4 +1,5 @@
 import 'package:book_app/pages/home.dart';
+import 'package:book_app/pages/profile.dart';
 import 'package:flutter/material.dart';
 
 class HomeScaffold extends StatefulWidget {
@@ -14,7 +15,7 @@ class _HomeScaffoldState extends State<HomeScaffold> {
 
   final List<Widget> _pages = [
     HomePage(),
-    Container(color: Colors.green),
+    ProfilePage(),
     Container(color: Colors.blue),
   ];
 

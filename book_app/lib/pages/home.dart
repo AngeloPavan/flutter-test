@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:book_app/controllers/auth_controller.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends StatelessWidget {
+  // const HomePage({super.key});
+  final authController = Get.put(AuthController());
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Ciao!"),
-    );
+  //   return Center(
+  //     child: FutureBuilder(
+  //         future: authController.getFirstName(),
+  //         builder: (context, snapshot) {
+  //           if (snapshot.hasData) {
+  //             return Center(
+  //               child: Text(
+  //                 "Benvenuto ${snapshot.data}",
+  //                 style: TextStyle(
+  //                   fontSize: 24,
+  //                   fontWeight: FontWeight.bold,
+  //                 ),
+  //               ),
+  //             );
+  //           } else {
+  //             return Center(
+  //               child: CircularProgressIndicator(),
+  //             );
+  //           }
+  //         }),
+  //   );
+  // }
+
+  return Text("Ciao!");
   }
 }
