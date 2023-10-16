@@ -1,11 +1,12 @@
 // ignore_for_file: sized_box_for_whitespace
-
 import 'package:book_app/pages/home_scaffold.dart';
 import 'package:book_app/pages/sign_up.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-import 'package:http/http.dart';
+
+import 'package:book_app/controllers/authcontroller.dart' as authcontroller;
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -15,22 +16,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  void login(String email, String password) async {
-    try {
-      Response response = await post(
-          Uri.parse("https://dummyjson.com/auth/login"),
-          body: {"username": email, "password": password});
-
-      if (response.statusCode == 200) {
-        print("Login successful");
-      } else {
-        print("Login failed");
-      }
-    } catch (e) {
-      print("e.toString()");
-    }
-  }
-
   double deviceHeight(BuildContext context) =>
       MediaQuery.of(context).size.height;
 
@@ -38,6 +23,14 @@ class _SignInState extends State<SignIn> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  late bool _passwordVisible;
+
+  @override
+  void initState(){
+    super.initState();
+    Get.put(authcontroller.AuthController());
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +82,18 @@ class _SignInState extends State<SignIn> {
                 padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
                 child: TextFormField(
                   controller: passwordController,
-                  decoration: const InputDecoration(
-                    hintText: "Password",
-                  ),
+                  decoration: InputDecoration(
+                      hintText: "Password",
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
+                          icon: Icon(_passwordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off))),
+                  obscureText: !_passwordVisible,
                 ),
               ),
               Container(
@@ -111,12 +113,7 @@ class _SignInState extends State<SignIn> {
                   padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const HomeScaffold()),
-                      // );
-                      login(emailController.text.toString(),
-                          passwordController.text.toString());
+                      Get.find<authcontroller.AuthController>().login(emailController.text, passwordController.text);
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 10),
