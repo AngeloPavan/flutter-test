@@ -5,14 +5,39 @@ import 'package:book_app/pages/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+import 'package:http/http.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   const SignIn({super.key});
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  void login(String email, String password) async {
+    try {
+      Response response = await post(
+          Uri.parse("https://dummyjson.com/auth/login"),
+          body: {"username": email, "password": password});
+
+      if (response.statusCode == 200) {
+        print("Login successful");
+      } else {
+        print("Login failed");
+      }
+    } catch (e) {
+      print("e.toString()");
+    }
+  }
 
   double deviceHeight(BuildContext context) =>
       MediaQuery.of(context).size.height;
 
   double deviceWidth(BuildContext context) => MediaQuery.of(context).size.width;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +45,9 @@ class SignIn extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       backgroundColor: const Color.fromARGB(255, 14, 76, 190),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          decoration: const BoxDecoration(color: Colors.white),
           width: deviceWidth(context),
           height: deviceHeight(context),
           child: Column(
@@ -51,18 +76,20 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
-                child: TextField(
-                  decoration: InputDecoration(
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
+                child: TextFormField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
                     hintText: "Email",
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
-                child: TextField(
-                  decoration: InputDecoration(
+              Padding(
+                padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                child: TextFormField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(
                     hintText: "Password",
                   ),
                 ),
@@ -84,10 +111,12 @@ class SignIn extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(60, 0, 60, 0),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const HomeScaffold()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const HomeScaffold()),
+                      // );
+                      login(emailController.text.toString(),
+                          passwordController.text.toString());
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 10),
